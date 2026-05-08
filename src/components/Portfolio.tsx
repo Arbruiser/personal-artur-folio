@@ -251,7 +251,6 @@ export function Portfolio() {
 
         <footer className="mt-20 border-t border-dashed border-border pt-6 font-mono text-xs text-muted-foreground">
           <span className="text-destructive">&gt;</span> © {new Date().getFullYear()} Artúr Vojt-Antal
-          <span className="caret" aria-hidden="true" />
         </footer>
       </div>
     </div>
