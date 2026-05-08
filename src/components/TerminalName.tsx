@@ -36,6 +36,7 @@ export function TerminalName() {
       <p className="mb-3 rounded-md border border-border bg-card/60 px-3 py-2 font-mono text-xs text-foreground/90 shadow-sm">
         <span className="text-accent">~/portfolio</span>{" "}
         <span className="text-destructive">$</span> whoami
+        <span className="caret" aria-hidden="true" />
       </p>
       <h1 className="min-h-[2.4em] text-4xl font-semibold leading-[1.05] md:min-h-[2.2em] md:text-6xl">
         {showWhoami ? (
