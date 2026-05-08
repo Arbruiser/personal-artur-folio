@@ -158,9 +158,9 @@ export function Portfolio() {
               <li key={p.href} className="group border-l-2 border-border pl-5 transition-colors hover:border-primary">
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-serif text-lg font-medium">
-                    <a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary">
+                    <a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
                       {p.title}
-                      <ArrowUpRight className="h-4 w-4 opacity-60" />
+                      <ArrowUpRight className="h-4 w-4 opacity-80" />
                     </a>
                   </h3>
                   <span className="shrink-0 text-xs uppercase tracking-wider text-muted-foreground">GitHub</span>
@@ -178,8 +178,9 @@ export function Portfolio() {
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-serif text-lg font-medium">
                     {p.href ? (
-                      <a href={p.href} target="_blank" rel="noreferrer" className="underline-offset-4 hover:text-primary hover:underline">
+                      <a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
                         {p.title}
+                        <ArrowUpRight className="h-4 w-4 opacity-80" />
                       </a>
                     ) : (
                       p.title
