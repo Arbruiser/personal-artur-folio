@@ -28,17 +28,17 @@ const lumiWork = [
   },
   {
     title: "AI Inference Examples",
-    blurb: "Reference examples maintained at CSC for running LLM and AI inference workloads — from single-node setups to multi-GPU deployments.",
+    blurb: "Reference examples maintained at CSC for running LLM inference workloads — from single-node setups to multi-GPU deployments.",
     href: "https://github.com/CSCfi/ai-inference-examples",
   },
   {
     title: "LUMI LLM Performance Guide",
-    blurb: "A guide focused on getting real performance out of LLMs on LUMI — covering profiling, parallelism strategies, and configuration trade-offs.",
+    blurb: "A guide focused on getting real performance out of LLMs on LUMI.",
     href: "https://github.com/Arbruiser/LUMI-LLM-performance-guide",
   },
   {
     title: "LUMI AIF Template",
-    blurb: "A starting-point template for projects in the LUMI AI Factory — sensible defaults for structure, environment and reproducibility.",
+    blurb: "A page template for learning materials: experts only need to edit a Markdown file and host it on GitHub to get a ready-to-share website in LUMI AI Factory colours.",
     href: "https://github.com/Arbruiser/LUMI_AIF_template",
   },
 ];
