@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import portrait from "@/assets/portrait.png";
-import { Mail, Phone, Github, Linkedin, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -85,12 +85,6 @@ function Index() {
 
         {/* Contact row */}
         <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm">
-          <a href="mailto:voitarthur@gmail.com" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
-            <Mail className="h-4 w-4" /> voitarthur@gmail.com
-          </a>
-          <a href="tel:+380965385800" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
-            <Phone className="h-4 w-4" /> +380 96 538 5800
-          </a>
           <a href="https://www.linkedin.com/in/artur-voit-antal-862b5b247/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
             <Linkedin className="h-4 w-4" /> LinkedIn
           </a>
@@ -194,14 +188,17 @@ function Index() {
         {/* CTA */}
         <Section title="Get in touch">
           <p className="text-base leading-relaxed text-muted-foreground">
-            Open to roles and collaborations in NLP, RAG, LLM applications and
-            language technology research.
+            Happy to answer questions about the LUMI AI Factory — the team I
+            work in at CSC — and to talk about collaboration with it. Reach
+            out on LinkedIn.
           </p>
           <a
-            href="mailto:voitarthur@gmail.com"
+            href="https://www.linkedin.com/in/artur-voit-antal-862b5b247/"
+            target="_blank"
+            rel="noreferrer"
             className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
           >
-            Say hello <ArrowUpRight className="h-4 w-4" />
+            Connect on LinkedIn <ArrowUpRight className="h-4 w-4" />
           </a>
         </Section>
 
