@@ -66,26 +66,26 @@
 
 :root {
   --radius: 0.5rem;
-  /* LUMI AI Factory palette */
-  --background: #ffffff;
-  --foreground: #231f20;
-  --card: #ffffff;
-  --card-foreground: #231f20;
-  --popover: #ffffff;
-  --popover-foreground: #231f20;
-  --primary: #2c6789;          /* LUMI blue */
-  --primary-foreground: #ffffff;
-  --secondary: #f4f4f7;
-  --secondary-foreground: #231f20;
-  --muted: #f4f4f7;
-  --muted-foreground: #6b6770;
-  --accent: #7477b8;           /* LUMI purple */
-  --accent-foreground: #ffffff;
-  --destructive: #ec008c;      /* LUMI magenta as effect */
+  /* LUMI AI Factory palette — dark theme */
+  --background: #1a1718;             /* near LUMI black, slightly lifted */
+  --foreground: #f5f3f4;
+  --card: #231f20;                   /* LUMI black */
+  --card-foreground: #f5f3f4;
+  --popover: #231f20;
+  --popover-foreground: #f5f3f4;
+  --primary: #9ca0d6;                /* LUMI purple, lifted for dark bg */
+  --primary-foreground: #1a1718;
+  --secondary: #2a2627;
+  --secondary-foreground: #f5f3f4;
+  --muted: #2a2627;
+  --muted-foreground: #a39ea1;
+  --accent: #5b8fb0;                 /* LUMI blue, lifted */
+  --accent-foreground: #1a1718;
+  --destructive: #ec008c;            /* LUMI magenta — effect */
   --destructive-foreground: #ffffff;
-  --border: #e6e4e8;
-  --input: #e6e4e8;
-  --ring: #ec008c;             /* magenta focus ring */
+  --border: #36302f;
+  --input: #36302f;
+  --ring: #ec008c;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
