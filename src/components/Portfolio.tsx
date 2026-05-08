@@ -1,5 +1,6 @@
 import portrait from "@/assets/portrait.png";
 import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import type { ReactNode } from "react";
 
 const skills = [
   "Large Language Models", "Retrieval-Augmented Generation",
@@ -243,7 +244,7 @@ export function Portfolio() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="mt-16">
       <h2 className="mb-6 font-serif text-2xl font-semibold md:text-3xl">{title}</h2>
