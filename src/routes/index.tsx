@@ -15,6 +15,34 @@ const skills = [
   "Git · Linux · SSH", "Java",
 ];
 
+const lumiWork = [
+  {
+    title: "LUMI SSH Tunnel Coding Agent",
+    blurb: "Tooling that lets coding agents work on LUMI through an SSH tunnel — bringing modern agentic developer workflows onto the supercomputer.",
+    href: "https://github.com/Arbruiser/LUMI-ssh-tunnel-coding-agent",
+  },
+  {
+    title: "LUMI AI Guide",
+    blurb: "Official guide for running AI workloads on LUMI — practical, opinionated documentation for users moving LLM and ML pipelines onto HPC.",
+    href: "https://github.com/Lumi-supercomputer/LUMI-AI-Guide",
+  },
+  {
+    title: "AI Inference Examples",
+    blurb: "Reference examples maintained at CSC for running LLM and AI inference workloads — from single-node setups to multi-GPU deployments.",
+    href: "https://github.com/CSCfi/ai-inference-examples",
+  },
+  {
+    title: "LUMI LLM Performance Guide",
+    blurb: "A guide focused on getting real performance out of LLMs on LUMI — covering profiling, parallelism strategies, and configuration trade-offs.",
+    href: "https://github.com/Arbruiser/LUMI-LLM-performance-guide",
+  },
+  {
+    title: "LUMI AIF Template",
+    blurb: "A starting-point template for projects in the LUMI AI Factory — sensible defaults for structure, environment and reproducibility.",
+    href: "https://github.com/Arbruiser/LUMI_AIF_template",
+  },
+];
+
 const projects = [
   {
     title: "Thesis: Retrieval-Augmented Generation in Phonology",
@@ -88,7 +116,7 @@ function Index() {
           <a href="https://www.linkedin.com/in/artur-voit-antal-862b5b247/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
             <Linkedin className="h-4 w-4" /> LinkedIn
           </a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
+          <a href="https://github.com/Arbruiser" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
             <Github className="h-4 w-4" /> GitHub
           </a>
         </div>
@@ -132,7 +160,27 @@ function Index() {
         </Section>
 
         {/* Projects */}
-        <Section title="Selected projects">
+        <Section title="Open-source work at LUMI AI Factory">
+          <ul className="space-y-6">
+            {lumiWork.map((p) => (
+              <li key={p.href} className="group border-l-2 border-border pl-5 transition-colors hover:border-primary">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-serif text-lg font-medium">
+                    <a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-primary">
+                      {p.title}
+                      <ArrowUpRight className="h-4 w-4 opacity-60" />
+                    </a>
+                  </h3>
+                  <span className="shrink-0 text-xs uppercase tracking-wider text-muted-foreground">GitHub</span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        {/* Earlier projects */}
+        <Section title="Earlier projects">
           <ul className="space-y-6">
             {projects.map((p) => (
               <li key={p.title} className="group border-l-2 border-border pl-5 transition-colors hover:border-primary">
