@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 type Stage = "idle" | "query" | "retrieve" | "chunks" | "generate" | "answer" | "done";
 
@@ -61,11 +61,11 @@ export function RagDemo() {
     return order.indexOf(stage) >= order.indexOf(s);
   };
 
-  const stages: { key: Stage; label: string }[] = [
+  const stages: { key: Stage; label: ReactNode }[] = [
     { key: "query", label: "query" },
     { key: "retrieve", label: "retriever" },
     { key: "chunks", label: "top-k chunks" },
-    { key: "generate", label: "GPT-4o" },
+    { key: "generate", label: <span className="normal-case">GPT-4o</span> },
     { key: "answer", label: "answer" },
   ];
 
