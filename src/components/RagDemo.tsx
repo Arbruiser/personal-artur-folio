@@ -150,8 +150,7 @@ export function RagDemo() {
       {/* Stat strip */}
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-dashed border-border pt-4 text-xs">
         <p className="font-mono text-muted-foreground">
-          <span className="text-destructive">+16–56%</span> over non-RAG baseline ·{" "}
-          <span className="text-destructive">93–96%</span> on self-made questions
+          <span className="text-destructive">+16–56%</span> over non-RAG baseline
         </p>
         <a
           href="https://helda.helsinki.fi/items/d71a36a2-50fe-46e8-8b35-110b416cd33f"

@@ -250,7 +250,7 @@ export function Portfolio() {
         </Section>
 
         <footer className="mt-20 border-t border-dashed border-border pt-6 font-mono text-xs text-muted-foreground">
-          <span className="text-destructive">&gt;</span> end of transmission · © {new Date().getFullYear()} Artúr Vojt-Antal
+          <span className="text-destructive">&gt;</span> © {new Date().getFullYear()} Artúr Vojt-Antal
           <span className="caret" aria-hidden="true" />
         </footer>
       </div>
@@ -263,10 +263,21 @@ function Section({ title, children, cmd }: { title: string; children: ReactNode;
   return (
     <section ref={ref} className="reveal mt-16">
       {cmd && (
-        <p className="mb-2 font-mono text-xs text-muted-foreground">
-          <span className="text-accent">~/portfolio</span>{" "}
-          <span className="text-destructive">$</span> {cmd}
-        </p>
+        <div className="mb-3 overflow-hidden rounded-md border border-border bg-card/60 shadow-sm">
+          <div className="flex items-center gap-1.5 border-b border-border bg-muted/40 px-3 py-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-primary/70" />
+            <span className="ml-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              zsh — artur@lumi
+            </span>
+          </div>
+          <p className="px-3 py-2 font-mono text-xs text-foreground/90">
+            <span className="text-accent">~/portfolio</span>{" "}
+            <span className="text-destructive">$</span> {cmd}
+            <span className="caret" aria-hidden="true" />
+          </p>
+        </div>
       )}
       <h2 className="mb-6 font-serif text-2xl font-semibold md:text-3xl">{title}</h2>
       {children}
