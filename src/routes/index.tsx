@@ -203,7 +203,7 @@ function Index() {
         </Section>
 
         <footer className="mt-20 border-t border-border pt-6 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Artúr Vojt-Antal · EU citizenship
+          © {new Date().getFullYear()} Artúr Vojt-Antal
         </footer>
       </div>
     </div>
