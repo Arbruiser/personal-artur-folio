@@ -1,6 +1,10 @@
 import portrait from "@/assets/portrait.png";
 import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import type { ReactNode } from "react";
+import { TerminalName } from "./TerminalName";
+import { MagneticLink } from "./MagneticLink";
+import { RagDemo } from "./RagDemo";
+import { useReveal } from "@/hooks/useReveal";
 
 const skills = [
   "Large Language Models", "Retrieval-Augmented Generation",
@@ -88,12 +92,7 @@ export function Portfolio() {
       <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <header className="flex flex-col-reverse items-start gap-8 md:flex-row md:items-center md:justify-between">
           <div className="flex-1">
-            <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              AI Specialist · LUMI Supercomputer
-            </p>
-            <h1 className="text-4xl font-semibold leading-[1.05] md:text-6xl">
-              Artúr<br />Vojt-Antal
-            </h1>
+            <TerminalName />
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
               I help users get the most out of large language models on
               Europe's LUMI supercomputer — bridging deep technical work with
@@ -108,15 +107,15 @@ export function Portfolio() {
         </header>
 
         <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm">
-          <a href="https://www.linkedin.com/in/artur-voit-antal-862b5b247/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
+          <MagneticLink href="https://www.linkedin.com/in/artur-voit-antal-862b5b247/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
             <Linkedin className="h-4 w-4" /> LinkedIn
-          </a>
-          <a href="https://github.com/Arbruiser" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
+          </MagneticLink>
+          <MagneticLink href="https://github.com/Arbruiser" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-primary">
             <Github className="h-4 w-4" /> GitHub
-          </a>
+          </MagneticLink>
         </div>
 
-        <Section title="About">
+        <Section title="About" cmd="cat about.md">
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>
               I'm an AI Specialist focused on helping users maximise the
@@ -137,7 +136,7 @@ export function Portfolio() {
           </div>
         </Section>
 
-        <Section title="Experience">
+        <Section title="Experience" cmd="ls -la experience/">
           <div className="space-y-8">
             <Entry
               years="Feb 2026 — present"
@@ -152,18 +151,18 @@ export function Portfolio() {
           </div>
         </Section>
 
-        <Section title="Open-source work at LUMI AI Factory">
+        <Section title="Open-source work at LUMI AI Factory" cmd="git log --oneline lumi/">
           <ul className="space-y-6">
             {lumiWork.map((p) => (
               <li key={p.href} className="group border-l-2 border-border pl-5 transition-colors hover:border-primary">
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-serif text-lg font-medium">
-                    <a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
+                    <MagneticLink href={p.href} target="_blank" rel="noreferrer" className="items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
                       {p.title}
                       <ArrowUpRight className="h-4 w-4 opacity-80" />
-                    </a>
+                    </MagneticLink>
                   </h3>
-                  <span className="shrink-0 text-xs uppercase tracking-wider text-muted-foreground">GitHub</span>
+                  <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">→ repo.git</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
               </li>
@@ -171,22 +170,26 @@ export function Portfolio() {
           </ul>
         </Section>
 
-        <Section title="Earlier projects">
+        <Section title="Thesis · Phonological RAG" cmd="./run_demo.sh">
+          <RagDemo />
+        </Section>
+
+        <Section title="Earlier projects" cmd="ls projects/">
           <ul className="space-y-6">
             {projects.map((p) => (
               <li key={p.title} className="group border-l-2 border-border pl-5 transition-colors hover:border-primary">
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-serif text-lg font-medium">
                     {p.href ? (
-                      <a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
+                      <MagneticLink href={p.href} target="_blank" rel="noreferrer" className="items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
                         {p.title}
                         <ArrowUpRight className="h-4 w-4 opacity-80" />
-                      </a>
+                      </MagneticLink>
                     ) : (
                       p.title
                     )}
                   </h3>
-                  <span className="shrink-0 text-xs uppercase tracking-wider text-muted-foreground">{p.tag}</span>
+                  <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{p.tag}</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
               </li>
@@ -194,17 +197,17 @@ export function Portfolio() {
           </ul>
         </Section>
 
-        <Section title="Skills & interests">
+        <Section title="Skills & interests" cmd="cat skills.json">
           <div className="flex flex-wrap gap-2">
             {skills.map((s) => (
-              <span key={s} className="rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground">
-                {s}
+              <span key={s} className="rounded border border-border bg-card px-2.5 py-1 font-mono text-xs text-foreground">
+                [ {s} ]
               </span>
             ))}
           </div>
         </Section>
 
-        <Section title="Education">
+        <Section title="Education" cmd="cat education.log">
           <ul className="space-y-6">
             {education.map((e) => (
               <li key={e.school + e.years} className="grid grid-cols-1 gap-1 md:grid-cols-[140px_1fr]">
@@ -219,7 +222,7 @@ export function Portfolio() {
           </ul>
         </Section>
 
-        <Section title="Languages">
+        <Section title="Languages" cmd="locale -a">
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {languages.map((l) => (
               <li key={l.name} className="rounded-md border border-border bg-card p-3">
@@ -230,33 +233,41 @@ export function Portfolio() {
           </ul>
         </Section>
 
-        <Section title="Get in touch">
+        <Section title="Get in touch" cmd="ssh artur@lumi">
           <p className="text-base leading-relaxed text-muted-foreground">
             Happy to answer questions about the LUMI AI Factory — the team I
             work in at CSC — and to talk about collaboration with it. Reach
             out on LinkedIn.
           </p>
-          <a
+          <MagneticLink
             href="https://www.linkedin.com/in/artur-voit-antal-862b5b247/"
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
+            className="mt-5 items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
           >
             Connect on LinkedIn <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </MagneticLink>
         </Section>
 
-        <footer className="mt-20 border-t border-border pt-6 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Artúr Vojt-Antal
+        <footer className="mt-20 border-t border-dashed border-border pt-6 font-mono text-xs text-muted-foreground">
+          <span className="text-destructive">&gt;</span> end of transmission · © {new Date().getFullYear()} Artúr Vojt-Antal
+          <span className="caret" aria-hidden="true" />
         </footer>
       </div>
     </div>
   );
 }
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+function Section({ title, children, cmd }: { title: string; children: ReactNode; cmd?: string }) {
+  const ref = useReveal<HTMLElement>();
   return (
-    <section className="mt-16">
+    <section ref={ref} className="reveal mt-16">
+      {cmd && (
+        <p className="mb-2 font-mono text-xs text-muted-foreground">
+          <span className="text-accent">~/portfolio</span>{" "}
+          <span className="text-destructive">$</span> {cmd}
+        </p>
+      )}
       <h2 className="mb-6 font-serif text-2xl font-semibold md:text-3xl">{title}</h2>
       {children}
     </section>
