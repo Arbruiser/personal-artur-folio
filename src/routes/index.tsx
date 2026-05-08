@@ -7,10 +7,12 @@ export const Route = createFileRoute("/")({
 });
 
 const skills = [
-  "Python", "Retrieval-Augmented Generation", "Large Language Models",
-  "Information Retrieval", "Machine Learning", "PyTorch & Neural Networks",
-  "Machine Translation", "High-Performance Computing", "Theoretical Linguistics",
-  "Git & Linux",
+  "Large Language Models", "Retrieval-Augmented Generation",
+  "High-Performance Computing", "Python", "Machine Learning",
+  "Information Retrieval", "Machine Translation", "PyTorch & Neural Networks",
+  "Coding agents", "Technical Writing", "Mentoring",
+  "Theoretical Linguistics", "Computational Linguistics",
+  "Git · Linux · SSH", "Java",
 ];
 
 const projects = [
@@ -63,15 +65,15 @@ function Index() {
         <header className="flex flex-col-reverse items-start gap-8 md:flex-row md:items-center md:justify-between">
           <div className="flex-1">
             <p className="mb-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              NLP · Language Technology
+              AI Specialist · LUMI Supercomputer
             </p>
             <h1 className="text-4xl font-semibold leading-[1.05] md:text-6xl">
               Artúr<br />Vojt-Antal
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
-              I build language technology — Retrieval-Augmented Generation,
-              LLM-powered search, and machine translation — with a foundation in
-              theoretical linguistics and the humanities.
+              I help users get the most out of large language models on
+              Europe's LUMI supercomputer — bridging deep technical work with
+              clear, human-centric communication.
             </p>
           </div>
           <img
@@ -99,22 +101,40 @@ function Index() {
 
         {/* About */}
         <Section title="About">
-          <p className="text-base leading-relaxed text-muted-foreground">
-            Described by my professors as endlessly curious, resourceful and
-            driven, I bring a versatile background in NLP, theoretical
-            linguistics and the humanities. I enjoy difficult, unfamiliar
-            problems — most recently refactoring a Java Clarin FCS endpoint at
-            CSC despite no prior Java experience.
-          </p>
+          <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+            <p>
+              I'm an AI Specialist focused on helping users maximise the
+              potential of LLMs on the LUMI supercomputer. My academic
+              foundation is in Natural Language Processing, theoretical
+              linguistics and teaching, but my day-to-day is shaped by
+              never-ending curiosity and a habit of learning by doing.
+            </p>
+            <p>
+              I thrive when a project asks for more than a predefined role,
+              shifting between deep technical implementation and high-level
+              communication — a "gear shift" I find natural and rewarding. I
+              take particular pride in covering the gaps when something
+              unexpected comes up, and I'm only really satisfied when a task
+              is delivered with the precision and craftsmanship that sets it
+              apart.
+            </p>
+          </div>
         </Section>
 
         {/* Experience */}
         <Section title="Experience">
-          <Entry
-            years="Sep — Nov 2025"
-            title="Intern, CSC — IT Center for Science"
-            body="Refactored Java code for a Clarin FCS endpoint, enabling the European search engine to query corpora hosted at CSC. Shipped despite a complex codebase and zero prior Java experience."
-          />
+          <div className="space-y-8">
+            <Entry
+              years="Feb 2026 — present"
+              title="Junior Machine Learning Specialist · CSC — IT Center for Science"
+              body="AI support on LUMI and customer success for industry users. Working across LLMs and HPC: technical writing, user-guide creation, mentoring, and hands-on work with coding agents to help teams get production value out of the supercomputer."
+            />
+            <Entry
+              years="Sep — Nov 2025"
+              title="Intern · CSC — IT Center for Science"
+              body="Set up Federated Content Search for local corpora — refactored a Java Clarin FCS endpoint so the European search engine can query corpora hosted at CSC. Shipped despite a complex codebase and no prior Java experience."
+            />
+          </div>
         </Section>
 
         {/* Projects */}
