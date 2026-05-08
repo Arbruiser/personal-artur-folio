@@ -33,7 +33,7 @@ export function TerminalName() {
 
   return (
     <div>
-      <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+      <p className="mb-3 rounded-md border border-border bg-card/60 px-3 py-2 font-mono text-xs text-foreground/90 shadow-sm">
         <span className="text-accent">~/portfolio</span>{" "}
         <span className="text-destructive">$</span> whoami
       </p>
@@ -47,9 +47,8 @@ export function TerminalName() {
           <span className="opacity-0">{NAME}</span>
         )}
       </h1>
-      <p className="mt-4 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+      <p className="mt-4 font-mono text-xs text-muted-foreground">
         <span className="text-destructive">$</span>{" "}
-        <span className="text-foreground/80">role</span> —{" "}
         AI Specialist · LUMI Supercomputer
       </p>
     </div>
