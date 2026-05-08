@@ -41,9 +41,10 @@ const lumiWork = [
 
 const projects = [
   {
-    title: "Thesis: Retrieval-Augmented Generation in Phonology",
+    title: "Retrieval-Augmented Generation in Phonology",
     blurb: "Built a RAG QA system in the specialised domain of phonology with LlamaIndex and OpenAI models, plus a custom benchmark dataset. Significantly outperforms non-RAG baselines.",
     tag: "MA Thesis",
+    href: "https://helda.helsinki.fi/items/d71a36a2-50fe-46e8-8b35-110b416cd33f",
   },
   {
     title: "Medical-Domain Search Engine",
@@ -175,7 +176,15 @@ export function Portfolio() {
             {projects.map((p) => (
               <li key={p.title} className="group border-l-2 border-border pl-5 transition-colors hover:border-primary">
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-lg font-medium">{p.title}</h3>
+                  <h3 className="font-serif text-lg font-medium">
+                    {p.href ? (
+                      <a href={p.href} target="_blank" rel="noreferrer" className="underline-offset-4 hover:text-primary hover:underline">
+                        {p.title}
+                      </a>
+                    ) : (
+                      p.title
+                    )}
+                  </h3>
                   <span className="shrink-0 text-xs uppercase tracking-wider text-muted-foreground">{p.tag}</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
