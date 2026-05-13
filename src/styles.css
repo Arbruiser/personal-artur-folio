@@ -191,11 +191,11 @@ body::before {
   animation: caret-blink 1s steps(1) infinite;
 }
 
-/* Background whisper text fade */
+/* Background whisper text fade — symmetric in/out, no plateau */
 @keyframes whisper-fade {
-  0%, 100% { opacity: 0; transform: translateY(8px); }
-  14%, 72% { opacity: 0.92; transform: translateY(0); }
-  86% { opacity: 0; transform: translateY(-8px); }
+  0% { opacity: 0; }
+  50% { opacity: 0.92; }
+  100% { opacity: 0; }
 }
 
 /* Reveal on scroll */
