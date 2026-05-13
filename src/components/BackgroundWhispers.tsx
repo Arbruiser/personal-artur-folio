@@ -16,47 +16,46 @@ type Whisper = {
   top: number;
   left: number;
   size: number;
-  duration: number;
+  delay: number;
 };
+
+const SIDE_SLOTS = [
+  { top: 14, left: 4 },
+  { top: 32, left: 79 },
+  { top: 56, left: 5 },
+  { top: 73, left: 75 },
+  { top: 88, left: 11 },
+];
+
+const MOBILE_SLOTS = [
+  { top: 9, left: 5 },
+  { top: 28, left: 54 },
+  { top: 67, left: 6 },
+];
 
 export function BackgroundWhispers() {
   const [whispers, setWhispers] = useState<Whisper[]>([]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let counter = 0;
-    const timeouts = new Set<number>();
-
-    const spawn = () => {
-      const text = PHRASES[Math.floor(Math.random() * PHRASES.length)];
-      const size = 16 + Math.random() * 16;
-      const approxWidth = Math.min(text.length * size * 0.62, window.innerWidth - 40);
-      const left = Math.random() * Math.max(1, window.innerWidth - approxWidth - 20) + 10;
-      const top = Math.random() * Math.max(1, window.innerHeight - 60) + 20;
-      const duration = 4500 + Math.random() * 2500;
-      const id = ++counter;
-      setWhispers((w) => [...w, { id, text, top, left, size, duration }]);
-      const removeId = window.setTimeout(() => {
-        setWhispers((w) => w.filter((x) => x.id !== id));
-        timeouts.delete(removeId);
-      }, duration);
-      timeouts.add(removeId);
-
-      const nextId = window.setTimeout(() => {
-        timeouts.delete(nextId);
-        spawn();
-      }, 1200 + Math.random() * 1600);
-      timeouts.add(nextId);
+    const buildWhispers = () => {
+      const slots = window.innerWidth < 760 ? MOBILE_SLOTS : SIDE_SLOTS;
+      setWhispers(
+        slots.map((slot, index) => ({
+          id: index,
+          text: PHRASES[index % PHRASES.length],
+          top: slot.top,
+          left: slot.left,
+          size: window.innerWidth < 760 ? 13 : 16 + (index % 2) * 3,
+          delay: index * -1600,
+        })),
+      );
     };
 
-    const startId = window.setTimeout(spawn, 400);
-    timeouts.add(startId);
-    return () => {
-      timeouts.forEach((t) => window.clearTimeout(t));
-      timeouts.clear();
-    };
+    buildWhispers();
+    window.addEventListener("resize", buildWhispers);
+    return () => window.removeEventListener("resize", buildWhispers);
   }, []);
 
   return (
@@ -67,13 +66,14 @@ export function BackgroundWhispers() {
       {whispers.map((w) => (
         <span
           key={w.id}
-          className="absolute font-mono whitespace-nowrap select-none"
+          className="absolute max-w-[18rem] select-none whitespace-normal text-balance font-mono leading-tight md:whitespace-nowrap"
           style={{
-            top: w.top,
-            left: w.left,
+            top: `${w.top}vh`,
+            left: `${w.left}vw`,
             fontSize: w.size,
             color: "var(--destructive)",
-            animation: `whisper-fade ${w.duration}ms ease-in-out forwards`,
+            textShadow: "0 0 18px color-mix(in srgb, var(--destructive) 70%, transparent)",
+            animation: `whisper-fade 7200ms ease-in-out ${w.delay}ms infinite`,
           }}
         >
           {w.text}
