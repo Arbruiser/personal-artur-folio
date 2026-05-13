@@ -10,7 +10,6 @@ import {
 
 import appCss from "../styles.css?url";
 import { CursorAccent } from "@/components/CursorAccent";
-import { BackgroundWhispers } from "@/components/BackgroundWhispers";
 
 function NotFoundComponent() {
   return (
@@ -116,7 +115,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <CursorAccent />
-      <BackgroundWhispers />
       <Outlet />
     </QueryClientProvider>
   );

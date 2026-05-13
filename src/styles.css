@@ -193,10 +193,9 @@ body::before {
 
 /* Background whisper text fade */
 @keyframes whisper-fade {
-  0%   { opacity: 0; transform: translateY(4px); }
-  18%  { opacity: 0.7; transform: translateY(0); }
-  82%  { opacity: 0.7; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-4px); }
+  0%, 100% { opacity: 0; transform: translateY(8px); }
+  14%, 72% { opacity: 0.92; transform: translateY(0); }
+  86% { opacity: 0; transform: translateY(-8px); }
 }
 
 /* Reveal on scroll */
