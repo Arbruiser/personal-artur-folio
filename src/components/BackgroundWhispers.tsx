@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 
 const PHRASES = [
   "vLLM is king",
@@ -32,14 +31,29 @@ export function BackgroundWhispers() {
     const timeouts = new Set<number>();
 
     const spawn = () => {
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
       const text = PHRASES[Math.floor(Math.random() * PHRASES.length)];
       // size: 8px to ~26px (current was ~16, so 2x smaller -> 8, a bit bigger -> 26)
       const size = rand(8, 26);
-      // approximate width budget so it fits on screen
-      const approxWidth = Math.min(text.length * size * 0.62, window.innerWidth * 0.6);
-      const maxWidth = Math.min(approxWidth + 8, window.innerWidth - 32);
-      const top = rand(6, 88);
-      const left = rand(2, Math.max(2, ((window.innerWidth - maxWidth - 16) / window.innerWidth) * 100));
+      const pageWidth = Math.min(768, viewportWidth - 48);
+      const contentLeft = (viewportWidth - pageWidth) / 2;
+      const contentRight = contentLeft + pageWidth;
+      const margin = 24;
+      const textGuard = 28;
+      const gutters = [
+        { start: margin, end: contentLeft - textGuard },
+        { start: contentRight + textGuard, end: viewportWidth - margin },
+      ].filter((g) => g.end - g.start >= 128);
+
+      if (gutters.length === 0) return;
+
+      const gutter = gutters[Math.floor(Math.random() * gutters.length)];
+      // approximate width budget so it fits inside the side gutters and avoids the main text column
+      const approxWidth = Math.min(text.length * size * 0.62, gutter.end - gutter.start);
+      const maxWidth = Math.max(96, Math.min(approxWidth + 8, gutter.end - gutter.start));
+      const top = rand(32, Math.max(32, viewportHeight - 96));
+      const left = rand(gutter.start, Math.max(gutter.start, gutter.end - maxWidth));
       const rotate = rand(-60, 60);
       // Old visible window ~7200ms; 5x less -> ~1440ms
       const duration = rand(2800, 3800);
@@ -69,21 +83,20 @@ export function BackgroundWhispers() {
     };
   }, []);
 
-  if (typeof document === "undefined") return null;
-
-  return createPortal(
+  return (
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 overflow-hidden"
-      style={{ zIndex: 0 }}
+      style={{ position: "fixed", zIndex: 0 }}
     >
       {whispers.map((w) => (
         <span
           key={w.id}
-          className="absolute hidden select-none whitespace-normal text-balance font-mono leading-tight md:block"
+          className="fixed hidden select-none whitespace-normal text-balance font-mono leading-tight xl:block"
           style={{
-            top: `${w.top}vh`,
-            left: `${w.left}vw`,
+            position: "fixed",
+            top: `${w.top}px`,
+            left: `${w.left}px`,
             maxWidth: `${w.maxWidth}px`,
             fontSize: w.size,
             color: "var(--destructive)",
@@ -96,7 +109,6 @@ export function BackgroundWhispers() {
           {w.text}
         </span>
       ))}
-    </div>,
-    document.body,
+    </div>
   );
 }
