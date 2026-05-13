@@ -27,27 +27,36 @@ export function BackgroundWhispers() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let counter = 0;
-    let timeoutId: number;
+    const timeouts = new Set<number>();
 
     const spawn = () => {
       const text = PHRASES[Math.floor(Math.random() * PHRASES.length)];
-      const size = 14 + Math.random() * 18;
-      // approximate width to keep within viewport
-      const approxWidth = Math.min(text.length * size * 0.6, window.innerWidth - 40);
-      const left = Math.random() * (window.innerWidth - approxWidth - 20) + 10;
-      const top = Math.random() * (window.innerHeight - 60) + 20;
-      const duration = 5000 + Math.random() * 3000;
+      const size = 16 + Math.random() * 16;
+      const approxWidth = Math.min(text.length * size * 0.62, window.innerWidth - 40);
+      const left = Math.random() * Math.max(1, window.innerWidth - approxWidth - 20) + 10;
+      const top = Math.random() * Math.max(1, window.innerHeight - 60) + 20;
+      const duration = 4500 + Math.random() * 2500;
       const id = ++counter;
       setWhispers((w) => [...w, { id, text, top, left, size, duration }]);
-      window.setTimeout(() => {
+      const removeId = window.setTimeout(() => {
         setWhispers((w) => w.filter((x) => x.id !== id));
+        timeouts.delete(removeId);
       }, duration);
+      timeouts.add(removeId);
 
-      timeoutId = window.setTimeout(spawn, 1800 + Math.random() * 2200);
+      const nextId = window.setTimeout(() => {
+        timeouts.delete(nextId);
+        spawn();
+      }, 1200 + Math.random() * 1600);
+      timeouts.add(nextId);
     };
 
-    timeoutId = window.setTimeout(spawn, 1500);
-    return () => window.clearTimeout(timeoutId);
+    const startId = window.setTimeout(spawn, 400);
+    timeouts.add(startId);
+    return () => {
+      timeouts.forEach((t) => window.clearTimeout(t));
+      timeouts.clear();
+    };
   }, []);
 
   return (
