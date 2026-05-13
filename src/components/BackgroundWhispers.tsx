@@ -29,6 +29,16 @@ export function BackgroundWhispers() {
   useEffect(() => {
     let nextId = 1;
     const timeouts = new Set<number>();
+    const root = document.documentElement;
+    const previousBodyPosition = document.body.style.position;
+    const previousBodyZIndex = document.body.style.zIndex;
+    const previousRootPosition = root.style.position;
+    const previousRootZIndex = root.style.zIndex;
+
+    document.body.style.position = "relative";
+    document.body.style.zIndex = "0";
+    root.style.position = "relative";
+    root.style.zIndex = "0";
 
     const spawn = () => {
       const viewportWidth = window.innerWidth;
@@ -80,6 +90,10 @@ export function BackgroundWhispers() {
     return () => {
       timeouts.forEach((t) => window.clearTimeout(t));
       timeouts.clear();
+      document.body.style.position = previousBodyPosition;
+      document.body.style.zIndex = previousBodyZIndex;
+      root.style.position = previousRootPosition;
+      root.style.zIndex = previousRootZIndex;
     };
   }, []);
 
@@ -87,7 +101,7 @@ export function BackgroundWhispers() {
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 overflow-hidden"
-      style={{ position: "fixed", zIndex: 0 }}
+      style={{ position: "fixed", zIndex: -1 }}
     >
       {whispers.map((w) => (
         <span
