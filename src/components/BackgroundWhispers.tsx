@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 const PHRASES = [
   "vLLM is king",
   "God bless Qwen",
@@ -10,69 +8,31 @@ const PHRASES = [
   "Mmm... Terminal",
 ];
 
-type Whisper = {
-  id: number;
-  text: string;
-  top: number;
-  left: number;
-  size: number;
-  delay: number;
-};
-
-const SIDE_SLOTS = [
-  { top: 14, left: 4 },
-  { top: 32, left: 79 },
-  { top: 56, left: 5 },
-  { top: 73, left: 75 },
-  { top: 88, left: 11 },
-];
-
-const MOBILE_SLOTS = [
-  { top: 9, left: 5 },
-  { top: 28, left: 54 },
-  { top: 67, left: 6 },
-];
+const WHISPERS = PHRASES.map((text, index) => ({
+  text,
+  top: [12, 24, 41, 58, 72, 84, 34][index],
+  side: index % 2 === 0 ? "left" : "right",
+  offset: [24, 28, 40, 32, 58, 48, 72][index],
+  size: [18, 16, 15, 14, 18, 20, 16][index],
+  delay: index * -1100,
+}));
 
 export function BackgroundWhispers() {
-  const [whispers, setWhispers] = useState<Whisper[]>([]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const buildWhispers = () => {
-      const slots = window.innerWidth < 760 ? MOBILE_SLOTS : SIDE_SLOTS;
-      setWhispers(
-        slots.map((slot, index) => ({
-          id: index,
-          text: PHRASES[index % PHRASES.length],
-          top: slot.top,
-          left: slot.left,
-          size: window.innerWidth < 760 ? 13 : 16 + (index % 2) * 3,
-          delay: index * -1600,
-        })),
-      );
-    };
-
-    buildWhispers();
-    window.addEventListener("resize", buildWhispers);
-    return () => window.removeEventListener("resize", buildWhispers);
-  }, []);
-
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-[60] overflow-hidden"
     >
-      {whispers.map((w) => (
+      {WHISPERS.map((w) => (
         <span
-          key={w.id}
-          className="absolute max-w-[18rem] select-none whitespace-normal text-balance font-mono leading-tight md:whitespace-nowrap"
+          key={w.text}
+          className="absolute hidden max-w-[15rem] select-none whitespace-normal text-balance font-mono leading-tight md:block"
           style={{
             top: `${w.top}vh`,
-            left: `${w.left}vw`,
+            [w.side]: w.offset,
             fontSize: w.size,
             color: "var(--destructive)",
-            textShadow: "0 0 18px color-mix(in srgb, var(--destructive) 70%, transparent)",
+            textShadow: "0 0 20px color-mix(in srgb, var(--destructive) 85%, transparent)",
             animation: `whisper-fade 7200ms ease-in-out ${w.delay}ms infinite`,
           }}
         >
