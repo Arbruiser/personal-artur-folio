@@ -89,7 +89,7 @@ const languages = [
 
 export function Portfolio() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen text-foreground">
       <BackgroundWhispers />
       <div className="relative z-10 mx-auto max-w-3xl px-6 py-16 md:py-24">
         <header className="flex flex-col-reverse items-start gap-8 md:flex-row md:items-center md:justify-between">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 const PHRASES = [
   "vLLM is king",
@@ -68,10 +69,13 @@ export function BackgroundWhispers() {
     };
   }, []);
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      className="pointer-events-none fixed inset-0 overflow-hidden"
+      style={{ zIndex: 0 }}
     >
       {whispers.map((w) => (
         <span
@@ -92,6 +96,7 @@ export function BackgroundWhispers() {
           {w.text}
         </span>
       ))}
-    </div>
+    </div>,
+    document.body,
   );
 }
