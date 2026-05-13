@@ -41,7 +41,7 @@ export function BackgroundWhispers() {
       const left = rand(2, Math.max(2, ((window.innerWidth - maxWidth - 16) / window.innerWidth) * 100));
       const rotate = rand(-60, 60);
       // Old visible window ~7200ms; 5x less -> ~1440ms
-      const duration = rand(1100, 1700);
+      const duration = rand(2800, 3800);
       const id = nextId++;
       const w: Whisper = { id, text, top, left, size, rotate, duration, maxWidth };
 
@@ -54,7 +54,7 @@ export function BackgroundWhispers() {
       timeouts.add(removeId);
 
       // Old spawn ~every 2s; 10x less often -> ~every 20s
-      const nextDelay = rand(15000, 25000);
+      const nextDelay = rand(4000, 9000);
       const nextId2 = window.setTimeout(spawn, nextDelay);
       timeouts.add(nextId2);
     };
@@ -71,7 +71,7 @@ export function BackgroundWhispers() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[60] overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
       {whispers.map((w) => (
         <span
