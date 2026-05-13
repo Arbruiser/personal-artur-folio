@@ -194,8 +194,8 @@ body::before {
 /* Background whisper text fade */
 @keyframes whisper-fade {
   0%   { opacity: 0; transform: translateY(4px); }
-  20%  { opacity: 0.38; transform: translateY(0); }
-  80%  { opacity: 0.38; transform: translateY(0); }
+  18%  { opacity: 0.7; transform: translateY(0); }
+  82%  { opacity: 0.7; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-4px); }
 }
 
