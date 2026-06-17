@@ -244,8 +244,8 @@ export function Portfolio() {
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {languages.map((l) => (
               <li key={l.name} className="rounded-md border border-border bg-card p-3">
-                <p className="font-serif text-sm font-medium">{l.name}</p>
-                <p className="text-xs text-muted-foreground">{l.level}</p>
+                <p className={`font-serif font-medium ${l.name === "russian" ? "text-xs" : "text-sm"}`}>{l.name}</p>
+                <p className={`text-muted-foreground ${l.name === "russian" ? "text-[10px]" : "text-xs"}`}>{l.level}</p>
               </li>
             ))}
           </ul>
