@@ -105,7 +105,7 @@ export function Portfolio() {
             <TerminalName />
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
               I work across the full LLM stack at the LUMI AI Factory — from
-              fine-tuning and evaluation to production inference on Europe's
+              fine-tuning and evaluation to inference at scale on Europe's
               fastest supercomputer.
             </p>
           </div>
