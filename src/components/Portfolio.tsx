@@ -175,6 +175,14 @@ export function Portfolio() {
                   <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">→ repo.git</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+                {p.extraLink && (
+                  <p className="mt-2 text-sm">
+                    <MagneticLink href={p.extraLink.href} target="_blank" rel="noreferrer" className="items-center gap-1 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
+                      {p.extraLink.label}
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-80" />
+                    </MagneticLink>
+                  </p>
+                )}
               </li>
             ))}
           </ul>
