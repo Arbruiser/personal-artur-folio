@@ -90,10 +90,10 @@ const education = [
 ];
 
 const languages = [
-  { name: "Ukrainian", level: "Native" },
+  { name: "Ukrainian 🇺🇦", level: "Native" },
   { name: "russian", level: "Native" },
-  { name: "English", level: "C2 — near-native" },
-  { name: "Hungarian", level: "B2 — upper-intermediate" },
+  { name: "English 🇬🇧", level: "C2 — near-native" },
+  { name: "Hungarian 🇭🇺", level: "B2 — upper-intermediate" },
 ];
 
 export function Portfolio() {
