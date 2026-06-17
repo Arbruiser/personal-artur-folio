@@ -18,7 +18,7 @@ const skills = [
 const lumiWork = [
   {
     title: "LUMI SSH Tunnel Coding Agent",
-    blurb: "Tooling that lets coding agents work on LUMI through an SSH tunnel — bringing modern agentic developer workflows onto the supercomputer.",
+    blurb: "Tooling that connects a local coding agent to an LLM running on LUMI via an SSH tunnel — your machine runs the agent while the model lives on the supercomputer.",
     href: "https://github.com/Arbruiser/LUMI-ssh-tunnel-coding-agent",
     extraLink: {
       label: "Companion blog: Connecting opencode to LUMI",
@@ -26,8 +26,8 @@ const lumiWork = [
     },
   },
   {
-    title: "LUMI AI Guide",
-    blurb: "Official guide for running AI workloads on LUMI — practical, opinionated documentation for users moving LLM and ML pipelines onto HPC.",
+    title: "LUMI AI Guide — 10-LLM-inference",
+    blurb: "Added Chapter 10 to the official LUMI AI Guide: a practical walkthrough of vLLM inference on LUMI.",
     href: "https://github.com/Lumi-supercomputer/LUMI-AI-Guide",
   },
   {
@@ -56,7 +56,7 @@ const projects = [
   },
   {
     title: "Kielipankki FCS Endpoint — European Search",
-    blurb: "Refactored and shipped a Clarin Federated Content Search endpoint in Java for Kielipankki during my internship on the Kielipankki team at CSC, so Finnish language corpora are now queryable from the European federated search at contentsearch.clarin.eu — despite a complex existing codebase and no prior Java experience.",
+    blurb: <>Refactored and shipped a Clarin Federated Content Search endpoint in Java for Kielipankki during my internship on the Kielipankki team at CSC, so Finnish language corpora are now queryable from the European federated search at <MagneticLink href="https://contentsearch.clarin.eu/" target="_blank" rel="noreferrer" className="items-center gap-1 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">contentsearch.clarin.eu</MagneticLink> — despite a complex existing codebase and no prior Java experience.</>,
     tag: "CSC internship",
     href: "https://github.com/CSCfi/Kielipankki-fcs-endpoint-ansible",
   },
@@ -91,7 +91,7 @@ const education = [
 
 const languages = [
   { name: "Ukrainian", level: "Native" },
-  { name: "Russian", level: "Native" },
+  { name: "russian", level: "Native" },
   { name: "English", level: "C2 — near-native" },
   { name: "Hungarian", level: "B2 — upper-intermediate" },
 ];
@@ -150,7 +150,7 @@ export function Portfolio() {
             <Entry
               years="Feb 2026 — present"
               title="Junior Machine Learning Specialist · CSC — IT Center for Science"
-              body="AI support on LUMI and customer success for industry users. Working across LLMs and HPC: technical writing, user-guide creation, mentoring, and hands-on work with coding agents to help teams get production value out of the supercomputer."
+              body="At the LUMI AI Factory — working across the full LLM lifecycle: fine-tuning, evaluation, LLM-as-a-judge, technical writing, user-guide creation, mentoring, and hands-on support to help industry teams get production value out of LUMI."
             />
             <Entry
               years="Sep — Nov 2025"
