@@ -20,6 +20,10 @@ const lumiWork = [
     title: "LUMI SSH Tunnel Coding Agent",
     blurb: "Tooling that lets coding agents work on LUMI through an SSH tunnel — bringing modern agentic developer workflows onto the supercomputer.",
     href: "https://github.com/Arbruiser/LUMI-ssh-tunnel-coding-agent",
+    extraLink: {
+      label: "Companion blog: Connecting opencode to LUMI",
+      href: "https://lumi-supercomputer.eu/connecting-opencode-to-lumi/",
+    },
   },
   {
     title: "LUMI AI Guide",
@@ -27,18 +31,18 @@ const lumiWork = [
     href: "https://github.com/Lumi-supercomputer/LUMI-AI-Guide",
   },
   {
-    title: "AI Inference Examples",
-    blurb: "Reference examples maintained at CSC for running LLM inference workloads — from single-node setups to multi-GPU deployments.",
-    href: "https://github.com/CSCfi/ai-inference-examples",
+    title: "LUMI AI Factory Onboarding",
+    blurb: "A practical survival guide for industry teams — startups, SMEs and enterprises — stepping onto LUMI for the first time. Covers SSH, the command line, CPUs vs. GPUs and storage tiers, Apptainer containers, Git, and Slurm, with no prior HPC experience assumed.",
+    href: "https://github.com/Arbruiser/LUMI_AIF_Onboarding",
   },
   {
     title: "LUMI LLM Performance Guide",
-    blurb: "A guide focused on getting real performance out of LLMs on LUMI.",
+    blurb: "A deep-dive companion to the LUMI AI Guide: how data moves between disk, VRAM and GPU cores, how KV-cache and context length actually cost you, and how to reason about prefill vs. decode throughput when serving LLMs.",
     href: "https://github.com/Arbruiser/LUMI-LLM-performance-guide",
   },
   {
     title: "LUMI AIF Template",
-    blurb: "A page template for learning materials: experts only need to edit a Markdown file and host it on GitHub to get a ready-to-share website in LUMI AI Factory colours.",
+    blurb: "A page template for learning materials: experts only need to edit a Markdown file and host it on GitHub to get a ready-to-share website in LUMI AI Factory colours. Vibe-coded with Lovable.",
     href: "https://github.com/Arbruiser/LUMI_AIF_template",
   },
 ];
@@ -49,6 +53,12 @@ const projects = [
     blurb: "Built a RAG QA system in the specialised domain of phonology with LlamaIndex and OpenAI models, plus a custom benchmark dataset. Significantly outperforms non-RAG baselines.",
     tag: "MA Thesis",
     href: "https://helda.helsinki.fi/items/d71a36a2-50fe-46e8-8b35-110b416cd33f",
+  },
+  {
+    title: "Kielipankki FCS Endpoint — European Search",
+    blurb: "Refactored and shipped a Clarin Federated Content Search endpoint in Java for Kielipankki during my internship on the Kielipankki team at CSC, so Finnish language corpora are now queryable from the European federated search at contentsearch.clarin.eu — despite a complex existing codebase and no prior Java experience.",
+    tag: "CSC internship",
+    href: "https://github.com/CSCfi/Kielipankki-fcs-endpoint-ansible",
   },
   {
     title: "Medical-Domain Search Engine",
@@ -165,6 +175,14 @@ export function Portfolio() {
                   <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">→ repo.git</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+                {p.extraLink && (
+                  <p className="mt-2 text-sm">
+                    <MagneticLink href={p.extraLink.href} target="_blank" rel="noreferrer" className="items-center gap-1 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
+                      {p.extraLink.label}
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-80" />
+                    </MagneticLink>
+                  </p>
+                )}
               </li>
             ))}
           </ul>
