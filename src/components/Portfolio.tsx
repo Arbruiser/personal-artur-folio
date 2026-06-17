@@ -105,8 +105,7 @@ export function Portfolio() {
             <TerminalName />
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
               I help users get the most out of large language models on
-              Europe's LUMI supercomputer — bridging deep technical work with
-              clear, human-centric communication.
+              Europe's LUMI supercomputer.
             </p>
           </div>
           <img
