@@ -104,8 +104,9 @@ export function Portfolio() {
           <div className="flex-1">
             <TerminalName />
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
-              I help users get the most out of large language models on
-              Europe's LUMI supercomputer.
+              I work across the full LLM stack at the LUMI AI Factory — from
+              fine-tuning and evaluation to production inference on Europe's
+              fastest supercomputer.
             </p>
           </div>
           <img
