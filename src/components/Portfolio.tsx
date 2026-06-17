@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { TerminalName } from "./TerminalName";
 import { MagneticLink } from "./MagneticLink";
 import { RagDemo } from "./RagDemo";
-import { BackgroundWhispers } from "./BackgroundWhispers";
 import { useReveal } from "@/hooks/useReveal";
 
 const skills = [
@@ -89,9 +88,8 @@ const languages = [
 
 export function Portfolio() {
   return (
-    <div className="relative min-h-screen text-foreground">
-      <BackgroundWhispers />
-      <div className="relative z-10 mx-auto max-w-3xl px-6 py-16 md:py-24">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="mx-auto max-w-3xl px-6 py-16 md:py-24">
         <header className="flex flex-col-reverse items-start gap-8 md:flex-row md:items-center md:justify-between">
           <div className="flex-1">
             <TerminalName />
