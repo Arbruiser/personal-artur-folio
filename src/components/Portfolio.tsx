@@ -34,6 +34,10 @@ const lumiWork = [
     title: "LUMI AI Factory Onboarding",
     blurb: "A practical survival guide for industry teams — startups, SMEs and enterprises — stepping onto LUMI for the first time. Covers SSH, the command line, CPUs vs. GPUs and storage tiers, Apptainer containers, Git, and Slurm, with no prior HPC experience assumed.",
     href: "https://github.com/Arbruiser/LUMI_AIF_Onboarding",
+    extraLink: {
+      label: "Onboarding website",
+      href: "https://arbruiser.github.io/LUMI_AIF_Onboarding/",
+    },
   },
   {
     title: "LUMI LLM Performance Guide",
