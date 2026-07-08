@@ -139,6 +139,15 @@ export function Portfolio() {
               never-ending curiosity and a habit of learning by doing.
             </p>
             <p>
+              I think of myself as a high-level engineer — I won't spend my
+              day inside vLLM source code, but I know enough about every layer
+              of the stack to bridge the gaps between them. I'm the kind of
+              person who knows a little about everything and a lot about how
+              it all fits together, and my value is in bringing together
+              fine-tuning, evaluation, RAG and inference into a coherent
+              whole that actually works for the user.
+            </p>
+            <p>
               I thrive when a project asks for more than a predefined role,
               shifting between deep technical implementation and high-level
               communication — a "gear shift" I find natural and rewarding. I
