@@ -80,16 +80,6 @@ export function Portfolio() {
           </ul>
         </Section>
 
-        <Section title="Talks, workshops & hackathons" cmd="cat events.log">
-          <ul className="space-y-6">
-            {events.map((e) => (
-              <li key={e.title}>
-                <Entry {...e} />
-              </li>
-            ))}
-          </ul>
-        </Section>
-
         <Section title="Open-source work at LUMI AI Factory" cmd="git log --oneline lumi/">
           <ul className="space-y-6">
             {lumiWork.map((p) => (
@@ -112,6 +102,16 @@ export function Portfolio() {
                     </MagneticLink>
                   </p>
                 )}
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section title="Talks, workshops & hackathons" cmd="cat events.log">
+          <ul className="space-y-6">
+            {events.map((e) => (
+              <li key={e.title}>
+                <Entry {...e} />
               </li>
             ))}
           </ul>

@@ -41,7 +41,7 @@ export const events = [
     when: "Sep 2026",
     title: "Hackathon: An agent for HPC clusters",
     subtitle: "LRZ · Munich",
-    body: "Built an agent that inspects an HPC system — hardware, modules, environment — and conditionally optimises code for whatever it finds it is running on.",
+    body: "Built an agent that inspects an HPC system (hardware, modules, environment) and conditionally optimises code for whatever it finds it is running on.",
   },
   {
     when: "Jun 2026",
