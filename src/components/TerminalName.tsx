@@ -50,7 +50,7 @@ export function TerminalName() {
       </h1>
       <p className="mt-4 font-mono text-xs text-muted-foreground">
         <span className="text-destructive">$</span>{" "}
-        AI Specialist · LUMI Supercomputer
+        Junior Machine Learning Specialist · LUMI AI Factory
       </p>
     </div>
   );

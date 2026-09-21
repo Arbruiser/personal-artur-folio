@@ -5,132 +5,7 @@ import { TerminalName } from "./TerminalName";
 import { MagneticLink } from "./MagneticLink";
 import { RagDemo } from "./RagDemo";
 import { useReveal } from "@/hooks/useReveal";
-
-const skills = {
-  "AI & Machine Learning": [
-    "Large Language Models", "Retrieval-Augmented Generation", "LLM performance evaluation",
-    "Information Retrieval", "Machine Translation", "PyTorch & Neural Networks", "Coding agents"
-  ],
-  "HPC & Software Engineering": [
-    "Python", "Git · Linux Command Line", "running things on AMD GPUs"
-  ],
-  "Linguistics & Communication": [
-    "Theoretical Linguistics", "Computational Linguistics", "Technical Writing", "Mentoring"
-  ]
-};
-
-const lumiWork = [
-  {
-    title: "LUMI SSH Tunnel Coding Agent",
-    blurb: "Built tooling that connects a local coding agent to an LLM running on LUMI via an SSH tunnel: your machine runs the agent while the model lives on the supercomputer.",
-    href: "https://github.com/Arbruiser/LUMI-ssh-tunnel-coding-agent",
-    extraLink: {
-      label: "Companion blog: Connecting opencode to LUMI",
-      href: "https://lumi-supercomputer.eu/connecting-opencode-to-lumi/",
-    },
-  },
-  {
-    title: "LUMI AI Guide: 10-LLM-inference",
-    blurb: "Authored Chapter 10 for the official LUMI AI Guide: a practical walkthrough of vLLM inference on LUMI.",
-    href: "https://github.com/Lumi-supercomputer/LUMI-AI-Guide",
-  },
-  {
-    title: "LUMI AI Factory Onboarding",
-    blurb: "Wrote a practical survival guide for industry teams (startups, SMEs, and enterprises) stepping onto LUMI for the first time. Covers SSH, the command line, CPUs vs. GPUs and storage tiers, Apptainer containers, Git, and Slurm, with no prior HPC experience assumed.",
-    href: "https://github.com/Arbruiser/LUMI_AIF_Onboarding",
-    extraLink: {
-      label: "Onboarding website",
-      href: "https://arbruiser.github.io/LUMI_AIF_Onboarding/",
-    },
-  },
-  {
-    title: "The Pragmatic Guide to LLMs",
-    blurb: "Authored a pragmatic guide and deep-dive into LLM performance: how data moves between disk, VRAM and GPU cores, how KV-cache and context length actually cost you, and how to reason about prefill vs. decode throughput when serving LLMs.",
-    href: "https://arbruiser.github.io/The-Pragmatic-Guide-to-LLMs/",
-  },
-  {
-    title: "LUMI to Cloud Migration Guide (WIP)",
-    blurb: "Drafted a comprehensive guide for migrating AI workloads from the LUMI supercomputer to cloud providers, detailing best practices and technical workflows.",
-    href: "https://lumi-ai-factory.github.io/LUMI_to_Cloud/",
-  },
-  {
-    title: "LUMI AIF Template",
-    blurb: "Designed a page template for learning materials: experts only need to edit a Markdown file and host it on GitHub to get a ready-to-share website in LUMI AI Factory colours. Vibe-coded with Lovable.",
-    href: "https://github.com/Arbruiser/LUMI_AIF_template",
-  },
-];
-
-const projects = [
-  {
-    title: "Retrieval-Augmented Generation in Phonology",
-    blurb: "Built a RAG QA system in the specialised domain of phonology with LlamaIndex and OpenAI models, plus a custom benchmark dataset. Significantly outperforms non-RAG baselines.",
-    tag: "MA Thesis",
-    href: "https://helda.helsinki.fi/items/d71a36a2-50fe-46e8-8b35-110b416cd33f",
-  },
-  {
-    title: "Kielipankki FCS Endpoint: European Search",
-    blurb: <>Refactored and shipped a Clarin Federated Content Search endpoint in Java for Kielipankki during my internship on the Kielipankki team at CSC, so Finnish language corpora are now queryable from the European federated search at <MagneticLink href="https://contentsearch.clarin.eu/" target="_blank" rel="noreferrer" className="items-center gap-1 text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">contentsearch.clarin.eu</MagneticLink>, despite a complex existing codebase and no prior Java experience.</>,
-    tag: "CSC internship",
-    href: "https://github.com/CSCfi/Kielipankki-fcs-endpoint-ansible",
-  },
-  {
-    title: "Medical-Domain Search Engine",
-    blurb: "Led a team building a search engine over medical text — preprocessing, TF-IDF, Hugging Face medical NER, plotting and frontend integration.",
-    tag: "Course project",
-  },
-  {
-    title: "Russian → English Neural Machine Translation",
-    blurb: "Trained a state-of-the-art NMT system from Russian to English for the Machine Translation course at the University of Helsinki.",
-    tag: "Course project",
-  },
-  {
-    title: "Cross-lingual Embedding Clustering",
-    blurb: "Used a state-of-the-art LLM and an NMT model to produce and cluster multilingual embeddings, comparing semantic structure across languages.",
-    tag: "Course project",
-  },
-  {
-    title: "Annotated News Corpus: Biden vs Trump",
-    blurb: "Coordinated a team that designed an annotation schema for references and evaluative language toward Biden and Trump in news articles.",
-    tag: "Course project",
-  },
-];
-
-const education = [
-  { years: "2023 - 2025", school: "University of Helsinki", degree: "MA, Linguistic Diversity & Digital Humanities (Language Technology)", note: "100% tuition fee waiver · GPA 4.3 / 5.0" },
-  { years: "2022 - 2023", school: "Eötvös Loránd University", degree: "MA, English Studies (Theoretical Linguistics)", note: "Stipendium Hungaricum · GPA 4.57 / 5.0" },
-  { years: "2019 - 2022", school: "Eötvös Loránd University", degree: "BA, Pedagogy (Organising & Developing Education)", note: "Stipendium Hungaricum · GPA 4.8 / 5.0" },
-  { years: "2016 - 2018", school: "Odessa National University", degree: "BA, Philology (Germanic Languages & Literatures)", note: "Full Ukrainian government scholarship · GPA 91 / 100" },
-];
-
-const languages = [
-  { name: "Ukrainian 🇺🇦", level: "Native" },
-  { name: "English 🇬🇧", level: "C2 (near-native)" },
-  { name: "Hungarian 🇭🇺", level: "B2 (upper-intermediate)" },
-];
-
-const events = [
-  {
-    when: "Oct 2026",
-    title: "Workshop: Agents on LUMI",
-    venue: "Nordic AI Factory Summit · Stockholm",
-    body: "Hands-on workshop on running coding and research agents against LLMs hosted on the LUMI supercomputer.",
-    tag: "workshop",
-  },
-  {
-    when: "Sep 2026",
-    title: "Hackathon: An agent for HPC clusters",
-    venue: "LRZ · Munich",
-    body: "Built an agent that inspects an HPC system — hardware, modules, environment — and conditionally optimises code for whatever it finds it is running on.",
-    tag: "hackathon",
-  },
-  {
-    when: "Jun 2026",
-    title: "Talk: Aitta, the LUMI AI Factory inference platform",
-    venue: "TPC Satellite Event 2026 · LRZ, Munich",
-    body: "Presented Aitta, the inference platform developed by the LUMI AI Factory, and how it serves models on European HPC infrastructure.",
-    tag: "presentation",
-  },
-];
+import { education, events, experience, languages, lumiWork, projects, skills } from "@/content/portfolio";
 
 export function Portfolio() {
   return (
@@ -165,8 +40,8 @@ export function Portfolio() {
         <Section title="About" cmd="cat about.md">
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>
-              I'm an AI Specialist focused on helping users maximise the
-              potential of LLMs on the LUMI supercomputer. My academic
+              I'm a Junior Machine Learning Specialist focused on helping users
+              maximise the potential of LLMs on the LUMI supercomputer. My academic
               foundation in NLP and theoretical linguistics gave me a rigorous
               analytical mindset, and my day-to-day work builds on that by
               focusing on practical integration. I work across the AI stack,
@@ -196,33 +71,20 @@ export function Portfolio() {
         </Section>
 
         <Section title="Experience" cmd="ls -la experience/">
-          <div className="space-y-8">
-            <Entry
-              years="Feb 2026 — present"
-              title="Junior Machine Learning Specialist · CSC — IT Center for Science"
-              body="At the LUMI AI Factory — working across the full LLM lifecycle: fine-tuning, evaluation, LLM-as-a-judge, technical writing, user-guide creation, mentoring, and hands-on support to help industry teams get production value out of LUMI."
-            />
-            <Entry
-              years="Sep — Nov 2025"
-              title="Intern · CSC — IT Center for Science"
-              body="Set up Federated Content Search for local corpora — refactored a Java Clarin FCS endpoint so the European search engine can query corpora hosted at CSC. Shipped despite a complex codebase and no prior Java experience."
-            />
-          </div>
+          <ul className="space-y-8">
+            {experience.map((e) => (
+              <li key={e.title}>
+                <Entry {...e} />
+              </li>
+            ))}
+          </ul>
         </Section>
 
         <Section title="Talks, workshops & hackathons" cmd="cat events.log">
           <ul className="space-y-6">
             {events.map((e) => (
-              <li key={e.title} className="grid grid-cols-1 gap-1 md:grid-cols-[140px_1fr]">
-                <span className="text-sm text-muted-foreground">{e.when}</span>
-                <div>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <p className="font-serif text-base font-medium">{e.title}</p>
-                    <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{e.tag}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{e.venue}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{e.body}</p>
-                </div>
+              <li key={e.title}>
+                <Entry {...e} />
               </li>
             ))}
           </ul>
@@ -302,20 +164,15 @@ export function Portfolio() {
         <Section title="Education" cmd="cat education.log">
           <ul className="space-y-6">
             {education.map((e) => (
-              <li key={e.school + e.years} className="grid grid-cols-1 gap-1 md:grid-cols-[140px_1fr]">
-                <span className="text-sm text-muted-foreground">{e.years}</span>
-                <div>
-                  <p className="font-serif text-base font-medium">{e.school}</p>
-                  <p className="text-sm text-muted-foreground">{e.degree}</p>
-                  <p className="mt-1 text-xs text-muted-foreground/80">{e.note}</p>
-                </div>
+              <li key={e.title + e.when}>
+                <Entry {...e} />
               </li>
             ))}
           </ul>
         </Section>
 
         <Section title="Languages" cmd="locale -a">
-          <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             {languages.map((l) => (
               <li key={l.name} className="rounded-md border border-border bg-card p-3">
                 <p className="font-serif text-sm font-medium">{l.name}</p>
@@ -366,13 +223,24 @@ function Section({ title, children, cmd }: { title: string; children: ReactNode;
   );
 }
 
-function Entry({ years, title, body }: { years: string; title: string; body: string }) {
+/** Dated row shared by Experience, Talks and Education: date on the left, details on the right. */
+function Entry({ when, over, title, subtitle, body, note }: { when: string; over?: string; title: string; subtitle?: string; body?: string; note?: string }) {
+  const upcoming = over !== undefined && new Date(over) > new Date();
   return (
     <div className="grid grid-cols-1 gap-1 md:grid-cols-[140px_1fr]">
-      <span className="text-sm text-muted-foreground">{years}</span>
+      <span className="text-sm text-muted-foreground">
+        {when}
+        {upcoming && (
+          <span className="ml-2 font-mono text-[10px] uppercase tracking-wider text-accent md:ml-0 md:mt-0.5 md:block">
+            upcoming
+          </span>
+        )}
+      </span>
       <div>
-        <p className="font-serif text-base font-medium">{title}</p>
-        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+        <h3 className="font-serif text-base font-medium">{title}</h3>
+        {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
+        {body && <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>}
+        {note && <p className="mt-1 text-xs text-muted-foreground/80">{note}</p>}
       </div>
     </div>
   );
